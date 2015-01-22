@@ -3,7 +3,11 @@ set -e
 source /build/buildconfig
 set -x
 
-## Many Ruby gems and NPM packages contain native extensions and require a compiler.
-$minimal_apt_get_install build-essential
-## Bundler has to be able to pull dependencies from git.
-$minimal_apt_get_install git
+cp /build/config/sources.list /etc/apt/sources.list
+
+gpg --keyserver pgpkeys.mit.edu --recv-key ABF5BD827BD9BF62
+gpg -a --export ABF5BD827BD9BF62 | sudo apt-key add -
+
+apt-get update
+apt-get -f install -y --no-install-recommends build-essential
+apt-get -f install -y --no-install-recommends git
