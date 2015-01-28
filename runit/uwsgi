@@ -1,4 +1,4 @@
 #!/bin/sh
 
 cd /home/app
-exec /sbin/setuser app /usr/local/bin/uwsgi -s /tmp/uwsgi.sock --chmod-socket=666 --module webapp --callable app
+exec /sbin/setuser app /usr/local/bin/uwsgi -s /tmp/uwsgi.sock --chmod-socket=666 --http-websockets --processes 8 --module webapp --callable app

@@ -4,8 +4,10 @@ source /build/buildconfig
 set -x
 
 ## aptitude install -y python-pip 
-apt-get install -y --no-install-recommends python2.7-dev nginx
-apt-get install -y python-setuptools
+apt-get install --force-yes -y --no-install-recommends python2.7-dev nginx
+apt-get install --force-yes -y python-setuptools
+# Use to websocket
+apt-get install --force-yes -y libssl-dev
 easy_install pip
 pip install uwsgi
 
